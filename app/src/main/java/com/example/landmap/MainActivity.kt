@@ -30,9 +30,10 @@ class MainActivity : AppCompatActivity() {
         val lundun=BitmapFactory.decodeResource(applicationContext.resources,R.drawable.lundun)
         val irak=BitmapFactory.decodeResource(applicationContext.resources,R.drawable.irak)
         val france=BitmapFactory.decodeResource(applicationContext.resources,R.drawable.france)
+
         var landimage=ArrayList<Bitmap>()
 
-        landimage= arrayListOf(india,lundun,irak,france)
+        landimage= arrayListOf(india ,uk,lundun,irak,france)
 
         val arrayAdapter=ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,arrayList)
 
@@ -42,7 +43,13 @@ class MainActivity : AppCompatActivity() {
         listview.onItemClickListener=AdapterView.OnItemClickListener{ adapterView: AdapterView<*>, view1: View, i: Int, l: Long ->
             var intent=Intent(applicationContext,Detail::class.java)
             intent.putExtra("name",arrayList[i])
+            val bitmap=landimage[i]
+            val chose=Global.Chose
+            chose.chooseImage=bitmap
+
+
             startActivity(intent)
+
 
         }
 
